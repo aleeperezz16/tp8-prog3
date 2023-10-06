@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using Entidades;
 
 namespace DAO
 {
@@ -82,6 +83,20 @@ namespace DAO
             return estado;
         }
 
+        public int agregarRegistro(Sucursal sucursal)
+        {          
+
+            String Consulta = "INSERT INTO Sucursal (NombreSucursal,DescripcionSucursal,Id_ProvinciaSucursal,DireccionSucursal) " +
+                $"VALUES  ({sucursal.Nombre},{sucursal.Descripcion},{sucursal.IdProvincia},{sucursal.Direccion})";
+            SqlConnection Conexion = getConexion();
+
+            SqlCommand comando = new SqlCommand(Consulta,Conexion);   
+
+            return comando.ExecuteNonQuery();
+            
+        }
+
+        
 
     }
 }
