@@ -59,7 +59,11 @@ namespace DAO
             return datos;
         }
 
-
+        public DataTable getTablaSucursales()
+        {
+            DataTable tabla = ObtenerTabla("Sucursal", "Select Id_Sucursal,NombreSucursal as Nombre, DescripcionSucursal as Descripcion, DescripcionProvincia ,DireccionSucursal  from Sucursal INNER JOIN Provincia ON Id_Provincia=Id_ProvinciaSucursal");
+            return tabla;
+        }
         public DataTable ObtenerTabla(String NombreTabla, String consulta)
         {
             DataSet ds = new DataSet();
@@ -96,7 +100,15 @@ namespace DAO
             
         }
 
-        
+        public int eliminarRegistro(Sucursal sucursal)
+        {
+            SqlConnection conexion = getConexion();
+            String consulta =$"Delete from Sucursal Where Id_Sucursal={sucursal.IdSucursal}";
+            SqlCommand comando = new SqlCommand(consulta, conexion);
+            int filasAfectadas = comando.ExecuteNonQuery();
+            return filasAfectadas;
+
+        }
 
     }
 }

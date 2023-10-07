@@ -14,24 +14,40 @@ namespace Negocio
 
         public ManejoDeSurcursales() { }
 
-        public void agregarSucursal(Sucursal sucursal)
+        public bool agregarSucursal(Sucursal sucursal)
         {
+            int cantidadFilas=0;
             String consulta = $"Select * from Sucursales WHERE NombreSucursal LIKE '{sucursal.Nombre}'";
 
             if (!Conexion.existe(consulta))
             {
-                if (Conexion.agregarRegistro(sucursal) != 0)
-                {
-                    //label: agregado con exito
-                }
-                else
-                {
-                    //label: no se pudo agregar
-                }
+                cantidadFilas = Conexion.agregarRegistro(sucursal);
+            }
+            if (cantidadFilas == 1)
+            {
+                return true;
             }
             else
             {
-                //label: ya existe la sucursal
+                return false;
+            }
+
+        }
+        public bool eliminarSucursal(Sucursal sucursal)
+        {
+            int cantidadFilas = 0;
+            string consulta = $"Select * From Sucursal Where IdSucursal= '{sucursal.IdSucursal}'";
+            if (!Conexion.existe(consulta))
+            {
+                cantidadFilas = Conexion.eliminarRegistro(sucursal);
+            }
+            if (cantidadFilas == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
