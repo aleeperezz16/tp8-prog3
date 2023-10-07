@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <form id="form2">
+    <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
                 <tr>
@@ -33,10 +33,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
-    </form>
-    <form id="form1" runat="server">
-        <div>
         </div>
     </form>
 </body>
