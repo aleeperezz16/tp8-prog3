@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <form id="form2" runat="server">
+    <form id="form2">
         <div>
             <table class="auto-style1">
                 <tr>
