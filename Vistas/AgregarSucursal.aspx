@@ -63,6 +63,26 @@
         .auto-style19 {
             height: 25px;
         }
+        .auto-style20 {
+            width: 10px;
+        }
+        .auto-style21 {
+            margin-left: 0px;
+        }
+        .auto-style22 {
+            height: 29px;
+        }
+        .auto-style23 {
+            width: 10px;
+            height: 29px;
+        }
+        .auto-style24 {
+            height: 26px;
+        }
+        .auto-style25 {
+            width: 10px;
+            height: 26px;
+        }
         </style>
 </head>
 <body>
@@ -124,55 +144,54 @@
                                     <asp:RequiredFieldValidator ID="rfvdescripcion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="Ingrese una Descripcion"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="auto-style2">&nbsp;</td>
+                                <td class="auto-style3">
+                                    <asp:Label ID="lbprovincia" runat="server" Text="Provincias:"></asp:Label>
+                                </td>
+                                <td class="auto-style13">
+                                    <asp:DropDownList ID="ddlprovincias" runat="server" CssClass="auto-style21">
+                                        <asp:ListItem>--Seleccionar--</asp:ListItem>
+                                    </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvprovincias" runat="server" ControlToValidate="ddlprovincias" ErrorMessage="Seleccione una Provincia" InitialValue="--Seleccionar--"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style2">&nbsp;</td>
+                                <td class="auto-style3">
+                                    <asp:Label ID="lbdireccion" runat="server" Text="Dirección:"></asp:Label>
+                                </td>
+                                <td class="auto-style13">
+                                    <asp:TextBox ID="tbdireccion" runat="server"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvdireccion" runat="server" ControlToValidate="tbdireccion" ErrorMessage="Ingrese una Dirección"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style2">&nbsp;</td>
+                                <td class="auto-style3">
+                                    &nbsp;</td>
+                                <td class="auto-style13">
+                                    &nbsp;</td>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style2">&nbsp;</td>
+                                <td class="auto-style3">
+                                    &nbsp;</td>
+                                <td class="auto-style13">
+                                    &nbsp;</td>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
                         </table>
                     </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
                 </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
+                </table>
         </div>
     </form>
 </body>
