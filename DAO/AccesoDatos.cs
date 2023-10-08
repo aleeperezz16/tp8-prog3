@@ -30,7 +30,7 @@ namespace DAO
                 cn.Open();
                 return cn;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -44,7 +44,7 @@ namespace DAO
                 adaptador = new SqlDataAdapter(consultaSql, cn);
                 return adaptador;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

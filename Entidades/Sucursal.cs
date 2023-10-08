@@ -8,12 +8,12 @@ namespace Entidades
 {
     public class Sucursal
     {
-        public int IdSucursal { get => IdSucursal;}
-        public string Nombre { get => Nombre; set => Nombre = value;}
-        public string Descripcion { get => Descripcion; set => Descripcion = value;}
-        public int IdProvincia { get => IdProvincia; set => IdProvincia = value;}
-        public string Direccion { get => Direccion; set => Direccion = value;}
-        public string UrlImagen { get => UrlImagen; set => UrlImagen = value;}
+        public int IdSucursal { get; set; }
+        public string Nombre { get ; set;}
+        public string Descripcion { get ; set ;}
+        public int IdProvincia { get ; set;}
+        public string Direccion { get; set ;}
+        public string UrlImagen { get ; set;}
 
         public Sucursal()
         {

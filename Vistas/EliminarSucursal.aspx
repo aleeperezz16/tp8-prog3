@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EliminarSucursal.aspx.cs" Inherits="Vistas.EliminarSucursal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" UnobtrusiveValidationMode="None" CodeBehind="EliminarSucursal.aspx.cs" Inherits="Vistas.EliminarSucursal" %>
 
 <!DOCTYPE html>
 
@@ -65,7 +65,9 @@
                             <td class="auto-style6">
                     <asp:Label ID="lbResultado" runat="server" ForeColor="Red"></asp:Label>
                             </td>
-                            <td class="auto-style6"></td>
+                            <td class="auto-style6">
+                                <asp:CustomValidator ID="cvSucursalID" runat="server" ControlToValidate="tbIngresaridsuc" OnServerValidate="cvSucursalID_ServerValidate" ValidateEmptyText="True"></asp:CustomValidator>
+                            </td>
                             <td class="auto-style6"></td>
                         </tr>
                     </table>

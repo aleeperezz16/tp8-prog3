@@ -18,7 +18,12 @@ namespace Negocio
         public DataTable ObtenerSucursales()
         {
             DaoSucursal dao = new DaoSucursal();
-            return dao.getTablaSucursal();
+            return dao.getSucursales();
+        }
+        public DataTable ObtenerSucursal(int id)
+        {
+            DaoSucursal dao = new DaoSucursal();
+            return dao.getSucursal(id);
         }
 
         public bool agregarSucursal(Sucursal sucursal)
@@ -38,14 +43,15 @@ namespace Negocio
             else
                 return false;
         }
-        /*public bool eliminarSucursal(Sucursal sucursal)
+        public bool eliminarSucursal(Sucursal sucursal)
         {
+            DaoSucursal dao = new DaoSucursal();
             int cantidadFilas = 0;
-            string consulta = $"Select * From Sucursal Where IdSucursal= '{sucursal.IdSucursal}'";
-            if (!Conexion.existe(consulta))
+            /*if (!Conexion.existe(consulta))
             {
-                cantidadFilas = Conexion.eliminarRegistro(sucursal);
-            }
+                
+            }*/
+            cantidadFilas = dao.eliminarRegistro(sucursal);
             if (cantidadFilas == 1)
             {
                 return true;
@@ -54,6 +60,6 @@ namespace Negocio
             {
                 return false;
             }
-        }*/
+        }
     }
 }
