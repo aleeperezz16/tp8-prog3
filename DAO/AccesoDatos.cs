@@ -80,27 +80,18 @@ namespace DAO
             return estado;
         }
 
-        public int agregarRegistro(Sucursal sucursal)
-        {          
-
-            String Consulta = "INSERT INTO Sucursal (NombreSucursal,DescripcionSucursal,Id_ProvinciaSucursal,DireccionSucursal) " +
-                $"VALUES  ({sucursal.Nombre},{sucursal.Descripcion},{sucursal.IdProvincia},{sucursal.Direccion})";
-            SqlConnection Conexion = getConexion();
-
-            SqlCommand comando = new SqlCommand(Consulta,Conexion);   
-
-            return comando.ExecuteNonQuery();
-            
-        }
-
-        public int eliminarRegistro(Sucursal sucursal)
+        public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)
         {
-            SqlConnection conexion = getConexion();
-            String consulta =$"Delete from Sucursal Where Id_Sucursal={sucursal.IdSucursal}";
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            int filasAfectadas = comando.ExecuteNonQuery();
-            return filasAfectadas;
-
+            int FilasCambiadas;
+            SqlConnection Conexion = getConexion();
+            SqlCommand cmd = new SqlCommand();
+            cmd = Comando;
+            cmd.Connection = Conexion;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = NombreSP;
+            FilasCambiadas = cmd.ExecuteNonQuery();
+            Conexion.Close();
+            return FilasCambiadas;
         }
 
     }
