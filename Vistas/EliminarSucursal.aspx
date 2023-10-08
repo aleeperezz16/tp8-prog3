@@ -9,99 +9,67 @@
         .auto-style1 {
             width: 100%;
         }
-        .auto-style4 {
-            width: 172px;
-        }
-        .auto-style5 {
-            width: 179px;
-            text-align: center;
-        }
-        .auto-style11 {
-            text-align: left;
-        }
         .auto-style2 {
             font-size: x-large;
-            width: 172px;
+            width: 188px;
             height: 48px;
             padding-left:10px;
+        }
+        .auto-style3 {
+            width: 269px;
+            height: 48px;
+        }
+        .auto-style4 {
+            height: 26px;
+            width: 188px;
+            padding-left: 10px;
+        }
+        .auto-style5{
+            height: 26px;
+            width: 269px;
         }
         .auto-style6 {
-            width: 179px;
-            height: 48px;
-        }
-        .auto-style7 {
-            height: 48px;
-        }
-        .auto-style9 {
             height: 26px;
-            width: 172px;
-            padding-left:10px;
         }
-        .auto-style10 {
-            height: 26px;
-            width: 179px;
-        }
-        .auto-style8 {
-            height: 26px;
+        .links-container a {
+        margin-left: 60px;
         }
         </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="links-container">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AgregarSucursal.aspx">Agregar Sucursal</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/ListadoSucursales.aspx">Listado de Sucursales</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/EliminarSucursal.aspx">Eliminar Sucursal</asp:HyperLink>
+        </div>
         <table class="auto-style1">
             <tr>
                 <td>
                     <table class="auto-style1">
                         <tr>
-                            <td class="auto-style4" style="padding-left: 40px">
-                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AgregarSucursal.aspx">Agregar Sucursal</asp:HyperLink>
-                            </td>
-                            <td class="auto-style5">
-                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/ListadoSucursales.aspx">Listado de Sucursales</asp:HyperLink>
-                            </td>
-                            <td class="auto-style11">
-                                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/EliminarSucursal.aspx">Eliminar Sucursal</asp:HyperLink>
-                            </td>
-                        </tr>
-                        <tr>
                             <td class="auto-style2"><strong>Eliminar Sucursal</strong></td>
-                            <td class="auto-style6"></td>
-                            <td class="auto-style7"></td>
+                            <td class="auto-style3"></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td class="auto-style9">Ingresar ID sucursal:</td>
-                            <td class="auto-style10">
-                                <asp:TextBox ID="tbIngresaridsuc" runat="server" Width="292px"></asp:TextBox>
+                            <td class="auto-style4">Ingresar ID sucursal:</td>
+                            <td class="auto-style5">
+                                <asp:TextBox ID="tbIngresaridsuc" runat="server" Width="234px"></asp:TextBox>
                             </td>
-                            <td class="auto-style8">
-                                <asp:Button ID="btnEliminar" runat="server" class="auto-style12" OnClick="btnEliminar_Click" Text="Eliminar" />
+                            <td class="auto-style6">
+                                <asp:Button ID="btnEliminar" runat="server" class="auto-style12" OnClick="btnEliminar_Click" Text="Eliminar" Width="73px" />
                             </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style6">
+                    <asp:Label ID="lbResultado" runat="server" ForeColor="Red"></asp:Label>
+                            </td>
+                            <td class="auto-style6"></td>
+                            <td class="auto-style6"></td>
                         </tr>
                     </table>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lbResultado" runat="server"></asp:Label>
-                </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
             </tr>
         </table>
     </form>
