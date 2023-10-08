@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using Entidades;
 using DAO;
 
 namespace Negocio
 {
-    class ManejoDeSurcursales
+    public class ManejoDeSurcursales
     {
         AccesoDatos Conexion;
 
         public ManejoDeSurcursales() { }
+
+        public DataTable ObtenerSucursales(int idSucursal = 0)
+        {
+            string consulta = "SELECT Id_Sucursal, NombreSucursal AS Nombre, DescripcionSucursal AS Descripcion, DescripcionProvincia AS Provincia, DireccionSucursal AS Direccion" +
+                "FROM Sucursal INNER JOIN Provincia ON Sucursal.Id_ProvinciaSucursal = Provincia.Id_Provincia";
+
+            if (idSucursal > 0)
+                consulta += $" WHERE Id_Sucursal = {idSucursal}";
+
+            return Conexion.ObtenerTabla("Sucursales", consulta);
+        }
 
         public bool agregarSucursal(Sucursal sucursal)
         {

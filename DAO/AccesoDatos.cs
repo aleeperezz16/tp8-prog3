@@ -20,7 +20,6 @@ namespace DAO
         public AccesoDatos(string baseDeDatos)
         {
             Ruta = $"Data Source=localhost\\sqlexpress; Initial Catalog={baseDeDatos}; Integrated Security=True";
-
         }
 
         private SqlConnection getConexion()
@@ -59,11 +58,6 @@ namespace DAO
             return datos;
         }
 
-        public DataTable getTablaSucursales()
-        {
-            DataTable tabla = ObtenerTabla("Sucursal", "Select Id_Sucursal,NombreSucursal as Nombre, DescripcionSucursal as Descripcion, DescripcionProvincia ,DireccionSucursal  from Sucursal INNER JOIN Provincia ON Id_Provincia=Id_ProvinciaSucursal");
-            return tabla;
-        }
         public DataTable ObtenerTabla(String NombreTabla, String consulta)
         {
             DataSet ds = new DataSet();
@@ -73,7 +67,6 @@ namespace DAO
             Conexion.Close();
             return ds.Tables[NombreTabla];
         }
-
 
         public Boolean existe(String consulta)
         {
