@@ -24,6 +24,10 @@ namespace Vistas
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            ManejoDeSurcursales manejoSuc = new ManejoDeSurcursales();
+            int IdSucursal = Convert.ToInt32(txtIDSucursal.Text.ToString());
+            gridSucursales.DataSource= manejoSuc.ObtenerSucursal(IdSucursal);
+            gridSucursales.DataBind();
 
         }
 

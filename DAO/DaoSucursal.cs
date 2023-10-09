@@ -26,14 +26,19 @@ namespace DAO
 
         public DataTable getSucursales()
         {
-            DataTable tabla = ds.ObtenerTabla("Categoria", consulta);
+            DataTable tabla = ds.ObtenerTabla("Sucursal", consulta);
             return tabla;
         }
-
+        public DataTable getProvincias()
+        {
+            DataTable tabla = ds.ObtenerTabla("Provincia", "SELECT * from provincia");
+        
+            return tabla;
+        }
         public DataTable getSucursal(int IdSucursal)
         {
             //Sucursal sucursal = new Sucursal();
-            DataTable tabla = ds.ObtenerTabla("Sucursal", consulta + "where Id_Sucursal=" + IdSucursal);
+            DataTable tabla = ds.ObtenerTabla("Sucursal", consulta + " where Id_Sucursal="+IdSucursal);
             /*sucursal.IdSucursal = IdSucursal;
             sucursal.Nombre = tabla.Rows[0][1].ToString();
             sucursal.Descripcion = tabla.Rows[0][2].ToString();

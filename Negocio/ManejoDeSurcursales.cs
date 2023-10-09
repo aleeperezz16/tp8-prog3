@@ -15,6 +15,11 @@ namespace Negocio
 
         public ManejoDeSurcursales() { }
 
+        public DataTable ObtenerProvincias()
+        {
+            DaoSucursal dao = new DaoSucursal();
+            return dao.getProvincias();
+        }
         public DataTable ObtenerSucursales()
         {
             DaoSucursal dao = new DaoSucursal();

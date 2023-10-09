@@ -18,14 +18,13 @@ namespace Vistas
         {
             if (!IsPostBack)
             {
-                /* // prueba ddl
                 DataTable sucursales = new DataTable();
-                sucursales = MDS.ObtenerSucursales();
+                sucursales = MDS.ObtenerProvincias();
 
                 ddlprovincias.DataSource = sucursales;
-                ddlprovincias.DataTextField = "Provincia";
-                ddlprovincias.DataValueField = "Id_ProvinciaSucursal";
-                ddlprovincias.DataBind();*/
+                ddlprovincias.DataTextField = "DescripcionProvincia";
+                ddlprovincias.DataValueField = "Id_Provincia";
+                ddlprovincias.DataBind();
             }
 
         }
@@ -47,7 +46,7 @@ namespace Vistas
             string nombre = txtNombreSucursal.Text;
             string descripcion = txtDescripcion.Text;
             int idProvincia = ddlprovincias.SelectedIndex;
-            string direccion = txtDescripcion.Text;
+            string direccion = txtDireccion.Text;
 
             sucursal.Nombre = nombre;
             sucursal.Descripcion = descripcion;
