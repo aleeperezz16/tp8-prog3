@@ -22,7 +22,7 @@ namespace DAO
             Ruta = $"Data Source=localhost\\sqlexpress; Initial Catalog={baseDeDatos}; Integrated Security=True";
         }
 
-        private SqlConnection getConexion()
+        public SqlConnection getConexion()
         {
             SqlConnection cn = new SqlConnection(this.Ruta);
             try
@@ -36,7 +36,7 @@ namespace DAO
             }
         }
 
-        private SqlDataAdapter getAdaptador(String consultaSql, SqlConnection cn)
+        public SqlDataAdapter getAdaptador(String consultaSql, SqlConnection cn)
         {
             SqlDataAdapter adaptador;
             try
@@ -50,7 +50,7 @@ namespace DAO
             }
         }
 
-        private SqlDataReader getDataReader(String Consulta)
+        public SqlDataReader getDataReader(String Consulta)
         {
             SqlConnection Conexion = getConexion();
             SqlCommand cmd = new SqlCommand(Consulta, Conexion);

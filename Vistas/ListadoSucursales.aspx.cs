@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Negocio;
 using Entidades;
 
+
 namespace Vistas
 {
     public partial class ListadoSucursales : System.Web.UI.Page
@@ -24,15 +25,24 @@ namespace Vistas
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            
+            lbresultadobusqueda.Text = "";
             NegocioSurcursales manejoSuc = new NegocioSurcursales();
             int IdSucursal = Convert.ToInt32(txtIDSucursal.Text.ToString());
             gridSucursales.DataSource= manejoSuc.ObtenerSucursal(IdSucursal);
             gridSucursales.DataBind();
 
+            if(!manejoSuc.ExisteSucursal(IdSucursal))
+            {
+                lbresultadobusqueda.Text = " No se encontró coincidencia con el ID solicitado";
+            }
+
         }
 
         protected void btnMostrarTodos_Click(object sender, EventArgs e)
         {
+            txtIDSucursal.Text = "";
+            lbresultadobusqueda.Text = "";
             Sucursal suc = new Sucursal();
             NegocioSurcursales manejoSuc = new NegocioSurcursales();
 

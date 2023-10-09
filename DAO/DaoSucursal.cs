@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entidades;
 using System.Data;
 using System.Data.SqlClient;
+using DAO;
 
 namespace DAO
 {
@@ -47,6 +48,18 @@ namespace DAO
             return tabla;
         }
 
+        public Boolean ExisteSucursal(int IdSucursal)
+        {
+            Boolean estado = false;
+            string consulta = "Select Id_Sucursal from Sucursal Where Id_Sucursal=" + IdSucursal;
+            SqlConnection Conexion = ds.getConexion();
+            SqlDataReader datos = ds.getDataReader(consulta);
+            if (datos.Read())
+            {
+                estado = true;
+            }
+            return estado;
+        }
 
         public int agregarRegistro(Sucursal sucursal)
         {

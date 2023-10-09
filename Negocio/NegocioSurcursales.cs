@@ -53,5 +53,12 @@ namespace Negocio
             DaoSucursal dao = new DaoSucursal();
             return dao.eliminarRegistro(idSucursal) == 1;
         }
+
+        public bool ExisteSucursal(int IdSucursal)
+        {
+            DaoSucursal dao = new DaoSucursal();
+            return dao.ExisteSucursal(IdSucursal);
+        }
+
     }
 }

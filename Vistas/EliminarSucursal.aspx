@@ -11,7 +11,7 @@
         }
         .auto-style2 {
             font-size: x-large;
-            width: 188px;
+            width: 259px;
             height: 48px;
             padding-left:10px;
         }
@@ -21,7 +21,7 @@
         }
         .auto-style4 {
             height: 26px;
-            width: 188px;
+            width: 259px;
             padding-left: 10px;
         }
         .auto-style5{
@@ -33,6 +33,10 @@
         }
         .links-container a {
         margin-left: 60px;
+        }
+        .auto-style7 {
+            height: 26px;
+            width: 259px;
         }
         </style>
 </head>
@@ -62,7 +66,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style6">
+                            <td class="auto-style7">
                     <asp:Label ID="lbResultado" runat="server" ForeColor="Red"></asp:Label>
                             </td>
                             <td class="auto-style6">

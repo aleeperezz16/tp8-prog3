@@ -13,7 +13,7 @@
             width: 100%;
         }
         .auto-style4 {
-            width: 243px;
+            width: 347px;
             text-align: center;
             height: 40px;
         }
@@ -28,10 +28,6 @@
         .auto-style18 {
             height: 40px;
         }
-        .auto-style9 {
-            width: 243px;
-            height: 34px;
-        }
         .auto-style13 {
             width: 319px;
             height: 34px;
@@ -43,16 +39,21 @@
         .auto-style15 {
             height: 34px;
         }
-        .auto-style10 {
-            width: 243px;
-            height: 23px;
-        }
         .auto-style7 {
             width: 319px;
             height: 23px;
         }
         .auto-style12 {
             width: 69px;
+            height: 23px;
+        }
+        .auto-style19 {
+            width: 347px;
+            height: 34px;
+            text-align: center;
+        }
+        .auto-style20 {
+            width: 347px;
             height: 23px;
         }
         </style>
@@ -77,7 +78,7 @@
                     <td class="auto-style18"></td>
                 </tr>
                 <tr>
-                    <td class="auto-style9">
+                    <td class="auto-style19">
                         <asp:Label ID="lbbusquedaidsucur" runat="server" Text="Busqueda ingrese Id sucursal:"></asp:Label>
                     </td>
                     <td class="auto-style13">
@@ -92,12 +93,21 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10"></td>
+                    <td class="auto-style20"></td>
                     <td class="auto-style7">
                         <asp:CompareValidator ID="cmpvID" runat="server" ControlToValidate="txtIDSucursal" ErrorMessage="El ID debe ser un numero" Operator="DataTypeCheck" Type="Integer" ValidationGroup="filtro"></asp:CompareValidator>
                     </td>
                     <td class="auto-style12"></td>
                     <td></td>
+                </tr>
+                <tr>
+                    <td class="auto-style20">
+                        <asp:Label ID="lbresultadobusqueda" runat="server"></asp:Label>
+                    </td>
+                    <td class="auto-style7">
+                        &nbsp;</td>
+                    <td class="auto-style12">&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
             </table>
         </div>
