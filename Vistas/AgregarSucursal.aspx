@@ -63,25 +63,8 @@
         .auto-style19 {
             height: 25px;
         }
-        .auto-style20 {
-            width: 10px;
-        }
         .auto-style21 {
             margin-left: 0px;
-        }
-        .auto-style22 {
-            height: 29px;
-        }
-        .auto-style23 {
-            width: 10px;
-            height: 29px;
-        }
-        .auto-style24 {
-            height: 26px;
-        }
-        .auto-style25 {
-            width: 10px;
-            height: 26px;
         }
         </style>
 </head>
@@ -164,10 +147,10 @@
                                     <asp:Label ID="lbdireccion" runat="server" Text="Dirección:"></asp:Label>
                                 </td>
                                 <td class="auto-style13">
-                                    <asp:TextBox ID="tbdireccion" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtDireccion" runat="server" Height="43px" Width="206px"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvdireccion" runat="server" ControlToValidate="tbdireccion" ErrorMessage="Ingrese una Dirección"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvdireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="Ingrese una Dirección"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -175,9 +158,11 @@
                                 <td class="auto-style3">
                                     &nbsp;</td>
                                 <td class="auto-style13">
-                                    &nbsp;</td>
+                                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
+                                </td>
                                 <td>
-                                    &nbsp;</td>
+                                    <asp:Label ID="lblResultado" runat="server"></asp:Label>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="auto-style2">&nbsp;</td>

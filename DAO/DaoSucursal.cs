@@ -12,7 +12,18 @@ namespace DAO
     public class DaoSucursal
     {
         AccesoDatos ds = new AccesoDatos("BDSucursales");
+
         string consulta = "SELECT Id_Sucursal, NombreSucursal AS Nombre, DescripcionSucursal AS Descripcion, DescripcionProvincia AS Provincia, DireccionSucursal AS Direccion FROM Sucursal INNER JOIN Provincia ON Sucursal.Id_ProvinciaSucursal = Provincia.Id_Provincia";
+        
+        /* //Prueba para el ddl
+        string consulta = "SELECT S.Id_Sucursal, " +
+            "S.NombreSucursal AS Nombre, " +
+            "S.DescripcionSucursal AS Descripcion," +
+            "S.Id_ProvinciaSucursal , " +
+            "P.DescripcionProvincia AS Provincia, " +
+            "S.DescripcionSucursal AS Direccion FROM Sucursal S " +
+            "INNER JOIN Provincia P ON S.Id_ProvinciaSucursal = P.Id_Provincia";*/
+
         public DataTable getSucursales()
         {
             DataTable tabla = ds.ObtenerTabla("Categoria", consulta);
@@ -65,7 +76,7 @@ namespace DAO
             SqlParametros.Value = sucursal.Descripcion;
             SqlParametros = Comando.Parameters.Add("@IDPROVINCIASUCURSAL", SqlDbType.Int);
             SqlParametros.Value = sucursal.IdProvincia;
-            SqlParametros = Comando.Parameters.Add("@DIRECCIONSUCURSAL", SqlDbType.Int);
+            SqlParametros = Comando.Parameters.Add("@DIRECCIONSUCURSAL", SqlDbType.VarChar);
             SqlParametros.Value = sucursal.Direccion;
         }
 
