@@ -59,7 +59,7 @@
                         <tr>
                             <td class="auto-style4">Ingresar ID sucursal:</td>
                             <td class="auto-style5">
-                                <asp:TextBox ID="tbIngresaridsuc" runat="server" Width="234px"></asp:TextBox>
+                                <asp:TextBox ID="txtIdSucursal" runat="server" Width="234px"></asp:TextBox>
                             </td>
                             <td class="auto-style6">
                                 <asp:Button ID="btnEliminar" runat="server" class="auto-style12" OnClick="btnEliminar_Click" Text="Eliminar" Width="73px" />
@@ -67,10 +67,10 @@
                         </tr>
                         <tr>
                             <td class="auto-style7">
-                    <asp:Label ID="lbResultado" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="lblResultado" runat="server" ForeColor="Red"></asp:Label>
                             </td>
                             <td class="auto-style6">
-                                <asp:CustomValidator ID="cvSucursalID" runat="server" ControlToValidate="tbIngresaridsuc" OnServerValidate="cvSucursalID_ServerValidate" ValidateEmptyText="True"></asp:CustomValidator>
+                                <asp:CustomValidator ID="cvSucursalId" runat="server" ControlToValidate="txtIdSucursal" OnServerValidate="cvSucursalID_ServerValidate" ValidateEmptyText="True"></asp:CustomValidator>
                             </td>
                             <td class="auto-style6"></td>
                         </tr>

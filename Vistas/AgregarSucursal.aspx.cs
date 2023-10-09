@@ -13,17 +13,14 @@ namespace Vistas
     public partial class AgregarSucursal : System.Web.UI.Page
     {
         static private NegocioSurcursales _negocio = new NegocioSurcursales();
-
-        
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ddlprovincias.DataSource = _negocio.ObtenerProvincias();
-                ddlprovincias.DataTextField = "DescripcionProvincia";
-                ddlprovincias.DataValueField = "Id_Provincia";
-                ddlprovincias.DataBind();
+                ddlProvincias.DataSource = _negocio.ObtenerProvincias();
+                ddlProvincias.DataTextField = "DescripcionProvincia";
+                ddlProvincias.DataValueField = "Id_Provincia";
+                ddlProvincias.DataBind();
             }
         }
 
@@ -33,12 +30,10 @@ namespace Vistas
 
             nuevaSucursal.Nombre = txtNombreSucursal.Text.Trim();
             nuevaSucursal.Descripcion = txtDescripcion.Text.Trim();
-            nuevaSucursal.IdProvincia = Convert.ToInt32(ddlprovincias.SelectedValue);
+            nuevaSucursal.IdProvincia = Convert.ToInt32(ddlProvincias.SelectedValue);
             nuevaSucursal.Direccion = txtDireccion.Text.Trim();
             
-            lblResultado.Text = _negocio.agregarSucursal(nuevaSucursal) ? "La sucursal se ha agregado con exito" : "No se pudo agregar la sucursal";
+            lblResultado.Text = _negocio.AgregarSucursal(nuevaSucursal) ? "La sucursal se ha agregado con exito" : "No se pudo agregar la sucursal";
         }
-
-        
     }
 }

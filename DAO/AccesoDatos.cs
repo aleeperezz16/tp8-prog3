@@ -22,77 +22,91 @@ namespace DAO
             Ruta = $"Data Source=localhost\\sqlexpress; Initial Catalog={baseDeDatos}; Integrated Security=True";
         }
 
-        public SqlConnection getConexion()
+        private SqlConnection GetConexion()
         {
-            SqlConnection cn = new SqlConnection(this.Ruta);
             try
             {
+                SqlConnection cn = new SqlConnection(Ruta);
                 cn.Open();
                 return cn;
             }
-            catch (Exception)
+            catch
             {
                 return null;
             }
         }
 
-        public SqlDataAdapter getAdaptador(String consultaSql, SqlConnection cn)
+        private SqlDataAdapter GetAdaptador(string consultaSql, SqlConnection cn)
         {
-            SqlDataAdapter adaptador;
             try
             {
-                adaptador = new SqlDataAdapter(consultaSql, cn);
-                return adaptador;
+                return new SqlDataAdapter(consultaSql, cn);
             }
-            catch (Exception)
+            catch
             {
                 return null;
             }
         }
-
-        public SqlDataReader getDataReader(String Consulta)
+        private SqlDataReader GetDataReader(string consulta, SqlConnection cn)
         {
-            SqlConnection Conexion = getConexion();
-            SqlCommand cmd = new SqlCommand(Consulta, Conexion);
-            SqlDataReader datos = cmd.ExecuteReader();
-            return datos;
-        }
-
-        public DataTable ObtenerTabla(String NombreTabla, String consulta)
-        {
-            DataSet ds = new DataSet();
-            SqlConnection Conexion = getConexion();
-            SqlDataAdapter adp = getAdaptador(consulta, Conexion);
-            adp.Fill(ds, NombreTabla);
-            Conexion.Close();
-            return ds.Tables[NombreTabla];
-        }
-
-        public Boolean existe(String consulta)
-        {
-            Boolean estado = false;
-            SqlConnection Conexion = getConexion();
-            SqlDataReader datos = getDataReader(consulta);
-            if (datos.Read())
+            try
             {
-                estado = true;
+                SqlCommand cmd = new SqlCommand(consulta, cn);
+                return cmd.ExecuteReader();
             }
-            return estado;
+            catch
+            {
+                return null;
+            }
         }
-
-        public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)
+        public DataTable ObtenerTabla(string nombreTabla, string consulta)
         {
-            int FilasCambiadas;
-            SqlConnection Conexion = getConexion();
-            SqlCommand cmd = new SqlCommand();
-            cmd = Comando;
-            cmd.Connection = Conexion;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = NombreSP;
-            FilasCambiadas = cmd.ExecuteNonQuery();
-            Conexion.Close();
-            return FilasCambiadas;
+            try
+            {
+                DataSet ds = new DataSet();
+
+                SqlConnection cn = GetConexion();
+                SqlDataAdapter adp = GetAdaptador(consulta, cn);
+
+                adp.Fill(ds, nombreTabla);
+                cn.Close();
+
+                return ds.Tables[nombreTabla];
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public int EjecutarProcedimientoAlmacenado(ref SqlCommand cmd, string procedimiento)
+        {
+            try
+            {
+                SqlConnection cn = GetConexion();
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = procedimiento;
+                
+                int filas = cmd.ExecuteNonQuery();
+                cn.Close();
+                
+                return filas;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
+        public bool HayDatos(string consulta)
+        {
+            SqlConnection cn = GetConexion();
+            SqlDataReader data = GetDataReader(consulta, cn);
+            bool hayDatos = data.Read();
+            cn.Close();
+
+            return hayDatos;
+        }
     }
 }

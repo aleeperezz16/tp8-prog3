@@ -51,40 +51,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
 
         /// <summary>
-        /// Control lbListadodesucursales.
+        /// Control txtIdSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbListadodesucursales;
+        protected global::System.Web.UI.WebControls.TextBox txtIdSucursal;
 
         /// <summary>
-        /// Control lbbusquedaidsucur.
+        /// Control rfvIdSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbbusquedaidsucur;
-
-        /// <summary>
-        /// Control txtIDSucursal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIDSucursal;
-
-        /// <summary>
-        /// Control rfvID.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvID;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIdSucursal;
 
         /// <summary>
         /// Control btnFiltrar.
@@ -105,22 +87,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Button btnMostrarTodos;
 
         /// <summary>
-        /// Control cmpvID.
+        /// Control cvId.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator cmpvID;
+        protected global::System.Web.UI.WebControls.CompareValidator cvId;
 
         /// <summary>
-        /// Control lbresultadobusqueda.
+        /// Control lblResultadoBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbresultadobusqueda;
+        protected global::System.Web.UI.WebControls.Label lblResultadoBusqueda;
 
         /// <summary>
         /// Control gridSucursales.

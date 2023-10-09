@@ -11,53 +11,30 @@ namespace Negocio
 {
     public class NegocioSurcursales
     {
-        
-
-        public NegocioSurcursales() { }
-
+        private DaoSucursal dao = new DaoSucursal();
+        public NegocioSurcursales() 
+        {
+        }
         public DataTable ObtenerProvincias()
         {
-            DaoSucursal dao = new DaoSucursal();
-            return dao.getProvincias();
+            return dao.GetProvincias();
         }
-        public DataTable ObtenerSucursales()
+        public DataTable ObtenerSucursales(int id = 0)
         {
-            DaoSucursal dao = new DaoSucursal();
-            return dao.getSucursales();
+            return dao.GetSucursales(id);
         }
-        public DataTable ObtenerSucursal(int id)
+        
+        public bool AgregarSucursal(Sucursal sucursal)
         {
-            DaoSucursal dao = new DaoSucursal();
-            return dao.getSucursal(id);
+            return dao.AgregarRegistro(sucursal) == 1;
         }
-
-        public bool agregarSucursal(Sucursal sucursal)
+        public bool EliminarSucursal(int idSucursal)
         {
-            DaoSucursal dao = new DaoSucursal();
-            int cantFilas = 0;
-
-           
-            /*if (dao.existeCategoría(cat) == false)
-            {
-                
-            }*/
-            cantFilas = dao.agregarRegistro(sucursal);
-
-            if (cantFilas == 1)
-                return true;
-            else
-                return false;
+            return dao.EliminarRegistro(idSucursal) == 1;
         }
-        public bool eliminarSucursal(int idSucursal)
+        public bool ExisteSucursal(int id)
         {
-            DaoSucursal dao = new DaoSucursal();
-            return dao.eliminarRegistro(idSucursal) == 1;
-        }
-
-        public bool ExisteSucursal(int IdSucursal)
-        {
-            DaoSucursal dao = new DaoSucursal();
-            return dao.ExisteSucursal(IdSucursal);
+            return dao.ExisteSucursal(id);
         }
 
     }

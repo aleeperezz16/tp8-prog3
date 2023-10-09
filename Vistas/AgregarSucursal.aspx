@@ -25,6 +25,7 @@
         .auto-style6 {
             width: 214px;
             height: 60px;
+            font-size: xx-large;
         }
         .auto-style14 {
             width: 220px;
@@ -40,6 +41,7 @@
         .auto-style10 {
             width: 214px;
             height: 50px;
+            font-size: x-large;
         }
         .auto-style15 {
             width: 220px;
@@ -105,24 +107,21 @@
                             <tr>
                                 <td class="auto-style5"></td>
                                 <td class="auto-style6">
-                                    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="GRUPO N° 6"></asp:Label>
-                                </td>
+                                    <strong>GRUPO N°6</strong></td>
                                 <td class="auto-style14"></td>
                                 <td class="auto-style8"></td>
                             </tr>
                             <tr>
                                 <td class="auto-style9"></td>
                                 <td class="auto-style10">
-                                    <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="X-Large" Text="Agregar Sucursal"></asp:Label>
-                                </td>
+                                    <strong>Agregar Sucursal</strong></td>
                                 <td class="auto-style15"></td>
                                 <td class="auto-style12"></td>
                             </tr>
                             <tr>
                                 <td class="auto-style2">&nbsp;</td>
                                 <td class="auto-style3">
-                                    <asp:Label ID="Label3" runat="server" Text="Nombre Sucursal:"></asp:Label>
-                                </td>
+                                    Nombre Sucursal:</td>
                                 <td class="auto-style13">
                                     <asp:TextBox ID="txtNombreSucursal" runat="server" Width="210px"></asp:TextBox>
                                 </td>
@@ -133,39 +132,36 @@
                             <tr>
                                 <td class="auto-style2">&nbsp;</td>
                                 <td class="auto-style3">
-                                    <asp:Label ID="Label4" runat="server" Text="Descripción:"></asp:Label>
-                                </td>
+                                    Descripción:</td>
                                 <td class="auto-style13">
                                     <asp:TextBox ID="txtDescripcion" runat="server" Height="35px" Width="210px"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvdescripcion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="Ingrese una Descripcion"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="txtDescripcion">Ingrese una descripción</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style2">&nbsp;</td>
                                 <td class="auto-style3">
-                                    <asp:Label ID="lbprovincia" runat="server" Text="Provincias:"></asp:Label>
-                                </td>
+                                    Provincias:</td>
                                 <td class="auto-style13">
-                                    <asp:DropDownList ID="ddlprovincias" runat="server" CssClass="auto-style21" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddlProvincias" runat="server" CssClass="auto-style21" AppendDataBoundItems="True">
                                         <asp:ListItem>--Seleccionar--</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvprovincias" runat="server" ControlToValidate="ddlprovincias" ErrorMessage="Seleccione una Provincia" InitialValue="--Seleccionar--"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvProvincias" runat="server" ControlToValidate="ddlprovincias" InitialValue="--Seleccionar--">Seleccione una provincia</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style22"></td>
                                 <td class="auto-style23">
-                                    <asp:Label ID="lbdireccion" runat="server" Text="Dirección:"></asp:Label>
-                                </td>
+                                    Dirección:</td>
                                 <td class="auto-style24">
                                     <asp:TextBox ID="txtDireccion" runat="server" Height="43px" Width="206px"></asp:TextBox>
                                 </td>
                                 <td class="auto-style25">
-                                    <asp:RequiredFieldValidator ID="rfvdireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="Ingrese una Dirección"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ControlToValidate="txtDireccion">Ingrese una dirección</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>

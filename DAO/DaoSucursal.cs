@@ -12,90 +12,57 @@ namespace DAO
 {
     public class DaoSucursal
     {
-        AccesoDatos ds = new AccesoDatos("BDSucursales");
+        private AccesoDatos _dataBase = new AccesoDatos("BDSucursales");
+        public DaoSucursal()
+        {
 
-        string consulta = "SELECT Id_Sucursal, NombreSucursal AS Nombre, DescripcionSucursal AS Descripcion, DescripcionProvincia AS Provincia, DireccionSucursal AS Direccion FROM Sucursal INNER JOIN Provincia ON Sucursal.Id_ProvinciaSucursal = Provincia.Id_Provincia";
+        }
+        public DataTable GetSucursales(int idSucursal)
+        {
+            string consulta = "SELECT Id_Sucursal, NombreSucursal AS Nombre, DescripcionSucursal AS Descripcion, DescripcionProvincia AS Provincia, DireccionSucursal AS Direccion FROM Sucursal INNER JOIN Provincia ON Sucursal.Id_ProvinciaSucursal = Provincia.Id_Provincia";
+
+            if (idSucursal > 0)
+                consulta += $" WHERE Id_Sucursal = {idSucursal}";
+            
+            return _dataBase.ObtenerTabla("Sucursales", consulta);
+        }
+        public DataTable GetProvincias()
+        {
+            return _dataBase.ObtenerTabla("Provincia", "SELECT * FROM Provincia");
+        }
         
-        /* //Prueba para el ddl
-        string consulta = "SELECT S.Id_Sucursal, " +
-            "S.NombreSucursal AS Nombre, " +
-            "S.DescripcionSucursal AS Descripcion," +
-            "S.Id_ProvinciaSucursal , " +
-            "P.DescripcionProvincia AS Provincia, " +
-            "S.DescripcionSucursal AS Direccion FROM Sucursal S " +
-            "INNER JOIN Provincia P ON S.Id_ProvinciaSucursal = P.Id_Provincia";*/
-
-        public DataTable getSucursales()
+        public bool ExisteSucursal(int idSucursal)
         {
-            DataTable tabla = ds.ObtenerTabla("Sucursal", consulta);
-            return tabla;
-        }
-        public DataTable getProvincias()
-        {
-            DataTable tabla = ds.ObtenerTabla("Provincia", "SELECT * from provincia");
-        
-            return tabla;
-        }
-        public DataTable getSucursal(int IdSucursal)
-        {
-            //Sucursal sucursal = new Sucursal();
-            DataTable tabla = ds.ObtenerTabla("Sucursal", consulta + " where Id_Sucursal="+IdSucursal);
-            /*sucursal.IdSucursal = IdSucursal;
-            sucursal.Nombre = tabla.Rows[0][1].ToString();
-            sucursal.Descripcion = tabla.Rows[0][2].ToString();
-            sucursal.IdProvincia = Convert.ToInt32(tabla.Rows[0][3].ToString());
-            sucursal.Direccion = tabla.Rows[0][4].ToString();*/
-            return tabla;
+            return _dataBase.HayDatos($"SELECT Id_Sucursal FROM Sucursal WHERE Id_Sucursal = {idSucursal}");
         }
 
-        public Boolean ExisteSucursal(int IdSucursal)
-        {
-            Boolean estado = false;
-            string consulta = "Select Id_Sucursal from Sucursal Where Id_Sucursal=" + IdSucursal;
-            SqlConnection Conexion = ds.getConexion();
-            SqlDataReader datos = ds.getDataReader(consulta);
-            if (datos.Read())
-            {
-                estado = true;
-            }
-            return estado;
-        }
-
-        public int agregarRegistro(Sucursal sucursal)
+        public int AgregarRegistro(Sucursal sucursal)
         {
             SqlCommand comando = new SqlCommand();
-            armarParametrosSucursalAgregar(ref comando, sucursal);
-            return ds.EjecutarProcedimientoAlmacenado(comando, "spAgregarSucursal");
+            ArmarParametrosSucursalAgregar(ref comando, sucursal);
+            return _dataBase.EjecutarProcedimientoAlmacenado(ref comando, "spAgregarSucursal");
         }
 
-        public int eliminarRegistro(int idSucursal)
+        public int EliminarRegistro(int idSucursal)
         {
             SqlCommand comando = new SqlCommand();
             ArmarParametrosSucursalEliminar(ref comando, idSucursal);
-            return ds.EjecutarProcedimientoAlmacenado(comando, "spEliminarSucursal");
+            return _dataBase.EjecutarProcedimientoAlmacenado(ref comando, "spEliminarSucursal");
         }
 
-        /*public int eliminarRegistro(Sucursal sucursal)
+        private void ArmarParametrosSucursalAgregar(ref SqlCommand cmd, Sucursal sucursal)
         {
-            SqlConnection conexion = getConexion();
-            String consulta = $"Delete from Sucursal Where Id_Sucursal={sucursal.IdSucursal}";
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            int filasAfectadas = comando.ExecuteNonQuery();
-            return filasAfectadas;
+            SqlParameter sqlParams = cmd.Parameters.Add("@NOMBRESUC", SqlDbType.VarChar);
+            sqlParams.Value = sucursal.Nombre;
 
-        }*/
+            sqlParams = cmd.Parameters.Add("@DESCRIPCIONSUCURSAL", SqlDbType.VarChar);
+            sqlParams.Value = sucursal.Descripcion;
 
-        private void armarParametrosSucursalAgregar(ref SqlCommand Comando, Sucursal sucursal)
-        {
-            SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@NOMBRESUC", SqlDbType.VarChar);
-            SqlParametros.Value = sucursal.Nombre;
-            SqlParametros = Comando.Parameters.Add("@DESCRIPCIONSUCURSAL", SqlDbType.VarChar);
-            SqlParametros.Value = sucursal.Descripcion;
-            SqlParametros = Comando.Parameters.Add("@IDPROVINCIASUCURSAL", SqlDbType.Int);
-            SqlParametros.Value = sucursal.IdProvincia;
-            SqlParametros = Comando.Parameters.Add("@DIRECCIONSUCURSAL", SqlDbType.VarChar);
-            SqlParametros.Value = sucursal.Direccion;
+            sqlParams = cmd.Parameters.Add("@IDPROVINCIASUCURSAL", SqlDbType.Int);
+            sqlParams.Value = sucursal.IdProvincia;
+
+            sqlParams = cmd.Parameters.Add("@DIRECCIONSUCURSAL", SqlDbType.VarChar);
+            sqlParams.Value = sucursal.Direccion;
         }
 
         private void ArmarParametrosSucursalEliminar(ref SqlCommand comando, int id)
@@ -105,28 +72,25 @@ namespace DAO
         }
 
         /*
-        CREATE PROCEDURE[dbo].[spAgregarSucursal]
+        CREATE PROCEDURE [dbo].[spAgregarSucursal]
         (
-        @NOMBRESUC VARCHAR(100),
-		@DESCRIPCIONSUCURSAL VARCHAR(100),
-		@IDPROVINCIASUCURSAL INT,
-		@DIRECCIONSUCURSAL VARCHAR(100)
+	        @NOMBRESUC VARCHAR(100),
+	        @DESCRIPCIONSUCURSAL VARCHAR(100),
+	        @IDPROVINCIASUCURSAL INT,
+	        @DIRECCIONSUCURSAL VARCHAR(100)
         )
         AS
-        INSERT INTO Sucursal(NombreSucursal, DescripcionSucursal, Id_ProvinciaSucursal, DireccionSucursal) 
-		VALUES(@NOMBRESUC,@DESCRIPCIONSUCURSAL,@IDPROVINCIASUCURSAL,@DIRECCIONSUCURSAL)
-        RETURN
+	        INSERT INTO Sucursal (NombreSucursal, DescripcionSucursal, Id_ProvinciaSucursal, DireccionSucursal) 
+	        VALUES (@NOMBRESUC, @DESCRIPCIONSUCURSAL, @IDPROVINCIASUCURSAL, @DIRECCIONSUCURSAL)
+        GO
 
-        */
-
-        /*
-       CREATE PROCEDURE[dbo].[spEliminarSucursal]
+        CREATE PROCEDURE [dbo].[spEliminarSucursal]
         (
-        @IDSUCURSAL INT
+	        @IDSUCURSAL INT
         )
-		AS
-        DELETE Sucursal WHERE Id_Sucursal = @IDSUCURSAL
-        RETURN
+        AS
+	        DELETE FROM Sucursal WHERE Id_Sucursal = @IDSUCURSAL
+        GO
         */
     }
 }

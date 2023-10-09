@@ -16,6 +16,7 @@
             width: 347px;
             text-align: center;
             height: 40px;
+            font-size: large;
         }
         .auto-style16 {
             width: 319px;
@@ -64,26 +65,24 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AgregarSucursal.aspx">Agregar Sucursal</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/ListarSucursal.aspx">Listado de Sucursales</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/ListadoSucursales.aspx">Listado de Sucursales</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/EliminarSucursal.aspx">Eliminar Sucursal</asp:HyperLink>
             <br />
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style4">
-                        <asp:Label ID="lbListadodesucursales" runat="server" Font-Bold="True" Font-Size="Large" Text="Listado de Sucursales"></asp:Label>
-                    </td>
+                        <strong>Listado de Sucursales</strong></td>
                     <td class="auto-style16"></td>
                     <td class="auto-style17"></td>
                     <td class="auto-style18"></td>
                 </tr>
                 <tr>
                     <td class="auto-style19">
-                        <asp:Label ID="lbbusquedaidsucur" runat="server" Text="Busqueda ingrese Id sucursal:"></asp:Label>
-                    </td>
+                        Búsqueda ingrese Id sucursal:</td>
                     <td class="auto-style13">
-                        <asp:TextBox ID="txtIDSucursal" runat="server" ValidationGroup="filtro" Width="200px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvID" runat="server" ControlToValidate="txtIDSucursal" ValidationGroup="filtro">Ingrese un ID</asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtIdSucursal" runat="server" ValidationGroup="filtro" Width="200px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvIdSucursal" runat="server" ControlToValidate="txtIdSucursal" ValidationGroup="filtro">Ingrese un Id</asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style14">
                         <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" ValidationGroup="filtro" />
@@ -95,14 +94,14 @@
                 <tr>
                     <td class="auto-style20"></td>
                     <td class="auto-style7">
-                        <asp:CompareValidator ID="cmpvID" runat="server" ControlToValidate="txtIDSucursal" ErrorMessage="El ID debe ser un numero" Operator="DataTypeCheck" Type="Integer" ValidationGroup="filtro"></asp:CompareValidator>
+                        <asp:CompareValidator ID="cvId" runat="server" ControlToValidate="txtIdSucursal" ErrorMessage="El Id debe ser un número" Operator="DataTypeCheck" Type="Integer" ValidationGroup="filtro"></asp:CompareValidator>
                     </td>
                     <td class="auto-style12"></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="auto-style20">
-                        <asp:Label ID="lbresultadobusqueda" runat="server"></asp:Label>
+                        <asp:Label ID="lblResultadoBusqueda" runat="server"></asp:Label>
                     </td>
                     <td class="auto-style7">
                         &nbsp;</td>

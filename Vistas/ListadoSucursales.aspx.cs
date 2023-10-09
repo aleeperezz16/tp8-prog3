@@ -12,42 +12,42 @@ namespace Vistas
 {
     public partial class ListadoSucursales : System.Web.UI.Page
     {
-        
+        private static NegocioSurcursales _negocio = new NegocioSurcursales();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                NegocioSurcursales manejoSuc = new NegocioSurcursales();
-                gridSucursales.DataSource = manejoSuc.ObtenerSucursales();
+                gridSucursales.DataSource = _negocio.ObtenerSucursales();
                 gridSucursales.DataBind();
             }
         }
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            int idSucursal = Convert.ToInt32(txtIdSucursal.Text.Trim());
             
-            lbresultadobusqueda.Text = "";
-            NegocioSurcursales manejoSuc = new NegocioSurcursales();
-            int IdSucursal = Convert.ToInt32(txtIDSucursal.Text.ToString());
-            gridSucursales.DataSource= manejoSuc.ObtenerSucursal(IdSucursal);
-            gridSucursales.DataBind();
-
-            if(!manejoSuc.ExisteSucursal(IdSucursal))
+            if (!_negocio.ExisteSucursal(idSucursal))
             {
-                lbresultadobusqueda.Text = " No se encontró coincidencia con el ID solicitado";
+                lblResultadoBusqueda.Text = "No se encontró coincidencia con el Id solicitado";
+                gridSucursales.DataSource = null;
+            }
+            else
+            {
+                gridSucursales.DataSource = _negocio.ObtenerSucursales(idSucursal);
+                lblResultadoBusqueda.Text = "";
             }
 
+            gridSucursales.DataBind();
+            txtIdSucursal.Text = "";
         }
 
         protected void btnMostrarTodos_Click(object sender, EventArgs e)
         {
-            txtIDSucursal.Text = "";
-            lbresultadobusqueda.Text = "";
-            Sucursal suc = new Sucursal();
-            NegocioSurcursales manejoSuc = new NegocioSurcursales();
-
-            gridSucursales.DataSource = manejoSuc.ObtenerSucursales();
+            gridSucursales.DataSource = _negocio.ObtenerSucursales();
             gridSucursales.DataBind();
+            
+            txtIdSucursal.Text = "";
+            lblResultadoBusqueda.Text = "";
         }
     }
 }

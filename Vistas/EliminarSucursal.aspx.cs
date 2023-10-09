@@ -18,33 +18,38 @@ namespace Vistas
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (cvSucursalID.IsValid)
+            lblResultado.Text = "";
+
+            if (cvSucursalId.IsValid)
             {
                 NegocioSurcursales negocio = new NegocioSurcursales();
-                lbResultado.Text = negocio.eliminarSucursal(Convert.ToInt32(tbIngresaridsuc.Text.Trim())) ? 
+                lblResultado.Text = negocio.EliminarSucursal(Convert.ToInt32(txtIdSucursal.Text.Trim())) ? 
                     "La sucursal se ha eliminado con éxito" : "El ID ingresado es inexistente";
             }
 
-            tbIngresaridsuc.Text = "";
+            txtIdSucursal.Text = "";
         }
 
         protected void cvSucursalID_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if (tbIngresaridsuc.Text.Trim().Length < 1)
+            string idSucursal = txtIdSucursal.Text.Trim();
+
+            if (idSucursal.Length < 1)
             {
                 args.IsValid = false;
-                cvSucursalID.Text = "Ingrese un ID";
+                cvSucursalId.Text = "Ingrese un ID";
+
                 return;
             }
 
             try
             {
-                int.Parse(tbIngresaridsuc.Text);
+                int.Parse(idSucursal);
             }
-            catch (Exception)
+            catch
             {
                 args.IsValid = false;
-                cvSucursalID.Text = "Ingrese un ID valido";
+                cvSucursalId.Text = "Ingrese un ID válido";
             }
         }
     }
