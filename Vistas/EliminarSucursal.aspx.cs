@@ -22,7 +22,7 @@ namespace Vistas
 
             if (cvSucursalId.IsValid)
             {
-                NegocioSurcursales negocio = new NegocioSurcursales();
+                NegocioSucursales negocio = new NegocioSucursales();
                 lblResultado.Text = negocio.EliminarSucursal(Convert.ToInt32(txtIdSucursal.Text.Trim())) ? 
                     "La sucursal se ha eliminado con éxito" : "El ID ingresado es inexistente";
             }

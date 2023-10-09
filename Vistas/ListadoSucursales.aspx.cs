@@ -12,7 +12,7 @@ namespace Vistas
 {
     public partial class ListadoSucursales : System.Web.UI.Page
     {
-        private static NegocioSurcursales _negocio = new NegocioSurcursales();
+        private static NegocioSucursales _negocio = new NegocioSucursales();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

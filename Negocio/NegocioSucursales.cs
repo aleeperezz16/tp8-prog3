@@ -9,10 +9,10 @@ using DAO;
 
 namespace Negocio
 {
-    public class NegocioSurcursales
+    public class NegocioSucursales
     {
         private DaoSucursal dao = new DaoSucursal();
-        public NegocioSurcursales() 
+        public NegocioSucursales() 
         {
         }
         public DataTable ObtenerProvincias()
