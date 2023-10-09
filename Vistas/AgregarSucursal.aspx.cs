@@ -12,48 +12,29 @@ namespace Vistas
 {
     public partial class AgregarSucursal : System.Web.UI.Page
     {
-        ManejoDeSurcursales MDS = new ManejoDeSurcursales();
+        static private ManejoDeSurcursales _negocio = new ManejoDeSurcursales();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                DataTable sucursales = new DataTable();
-                sucursales = MDS.ObtenerProvincias();
-
-                ddlprovincias.DataSource = sucursales;
+                ddlprovincias.DataSource = _negocio.ObtenerProvincias();
                 ddlprovincias.DataTextField = "DescripcionProvincia";
                 ddlprovincias.DataValueField = "Id_Provincia";
                 ddlprovincias.DataBind();
             }
-
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            Sucursal NuevaSucursal = new Sucursal();
-            
-            NuevaSucursal = CrearSucursalDesdePagina();
-            
-            lblResultado.Text = MDS.agregarSucursal(NuevaSucursal) ? "La sucursal se ha agregado con exito" : "No se pudo agregar la sucursal";
-            
-        }
-        
-        private Sucursal CrearSucursalDesdePagina()
-        {
-            Sucursal sucursal = new Sucursal();
+            Sucursal nuevaSucursal = new Sucursal();
 
-            string nombre = txtNombreSucursal.Text;
-            string descripcion = txtDescripcion.Text;
-            int idProvincia = ddlprovincias.SelectedIndex;
-            string direccion = txtDireccion.Text;
-
-            sucursal.Nombre = nombre;
-            sucursal.Descripcion = descripcion;
-            sucursal.IdProvincia = idProvincia;
-            sucursal.Direccion = direccion;
-
-            return sucursal;
+            nuevaSucursal.Nombre = txtNombreSucursal.Text.Trim();
+            nuevaSucursal.Descripcion = txtDescripcion.Text.Trim();
+            nuevaSucursal.IdProvincia = Convert.ToInt32(ddlprovincias.SelectedValue);
+            nuevaSucursal.Direccion = txtDireccion.Text.Trim();
+            
+            lblResultado.Text = _negocio.agregarSucursal(nuevaSucursal) ? "La sucursal se ha agregado con exito" : "No se pudo agregar la sucursal";
         }
     }
 }

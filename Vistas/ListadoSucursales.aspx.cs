@@ -35,6 +35,9 @@ namespace Vistas
         {
             Sucursal suc = new Sucursal();
             ManejoDeSurcursales manejoSuc = new ManejoDeSurcursales();
+
+            gridSucursales.DataSource = manejoSuc.ObtenerSucursales();
+            gridSucursales.DataBind();
         }
     }
 }
