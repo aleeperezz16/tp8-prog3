@@ -14,6 +14,8 @@ namespace Vistas
     {
         static private NegocioSurcursales _negocio = new NegocioSurcursales();
 
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,5 +38,7 @@ namespace Vistas
             
             lblResultado.Text = _negocio.agregarSucursal(nuevaSucursal) ? "La sucursal se ha agregado con exito" : "No se pudo agregar la sucursal";
         }
+
+        
     }
 }

@@ -66,6 +66,21 @@
         .auto-style21 {
             margin-left: 0px;
         }
+        .auto-style22 {
+            width: 29px;
+            height: 53px;
+        }
+        .auto-style23 {
+            width: 214px;
+            height: 53px;
+        }
+        .auto-style24 {
+            width: 220px;
+            height: 53px;
+        }
+        .auto-style25 {
+            height: 53px;
+        }
         </style>
 </head>
 <body>
@@ -133,7 +148,7 @@
                                     <asp:Label ID="lbprovincia" runat="server" Text="Provincias:"></asp:Label>
                                 </td>
                                 <td class="auto-style13">
-                                    <asp:DropDownList ID="ddlprovincias" runat="server" CssClass="auto-style21">
+                                    <asp:DropDownList ID="ddlprovincias" runat="server" CssClass="auto-style21" AppendDataBoundItems="True">
                                         <asp:ListItem>--Seleccionar--</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
@@ -142,14 +157,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style2">&nbsp;</td>
-                                <td class="auto-style3">
+                                <td class="auto-style22"></td>
+                                <td class="auto-style23">
                                     <asp:Label ID="lbdireccion" runat="server" Text="Dirección:"></asp:Label>
                                 </td>
-                                <td class="auto-style13">
+                                <td class="auto-style24">
                                     <asp:TextBox ID="txtDireccion" runat="server" Height="43px" Width="206px"></asp:TextBox>
                                 </td>
-                                <td>
+                                <td class="auto-style25">
                                     <asp:RequiredFieldValidator ID="rfvdireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="Ingrese una Dirección"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
