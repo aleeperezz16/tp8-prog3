@@ -12,7 +12,7 @@ namespace Vistas
 {
     public partial class AgregarSucursal : System.Web.UI.Page
     {
-        static private ManejoDeSurcursales _negocio = new ManejoDeSurcursales();
+        static private NegocioSurcursales _negocio = new NegocioSurcursales();
 
         protected void Page_Load(object sender, EventArgs e)
         {

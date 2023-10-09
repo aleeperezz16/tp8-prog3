@@ -55,10 +55,10 @@ namespace DAO
             return ds.EjecutarProcedimientoAlmacenado(comando, "spAgregarSucursal");
         }
 
-        public int eliminarRegistro(Sucursal sucursal)
+        public int eliminarRegistro(int idSucursal)
         {
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosSucursalEliminar(ref comando, sucursal);
+            ArmarParametrosSucursalEliminar(ref comando, idSucursal);
             return ds.EjecutarProcedimientoAlmacenado(comando, "spEliminarSucursal");
         }
 
@@ -85,11 +85,10 @@ namespace DAO
             SqlParametros.Value = sucursal.Direccion;
         }
 
-        private void ArmarParametrosSucursalEliminar(ref SqlCommand Comando, Sucursal sucursal)
+        private void ArmarParametrosSucursalEliminar(ref SqlCommand comando, int id)
         {
-            SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@IDSUCURSAL", SqlDbType.Int);
-            SqlParametros.Value = sucursal.IdSucursal;
+            SqlParameter sqlParams = comando.Parameters.Add("@IDSUCURSAL", SqlDbType.Int);
+            sqlParams.Value = id;
         }
 
         /*
@@ -110,7 +109,7 @@ namespace DAO
         /*
        CREATE PROCEDURE[dbo].[spEliminarSucursal]
         (
-        @IDSUCURSAL VARCHAR(100)
+        @IDSUCURSAL INT
         )
 		AS
         DELETE Sucursal WHERE Id_Sucursal = @IDSUCURSAL

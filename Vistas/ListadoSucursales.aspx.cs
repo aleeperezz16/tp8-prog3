@@ -16,7 +16,7 @@ namespace Vistas
         {
             if (!IsPostBack)
             {
-                ManejoDeSurcursales manejoSuc = new ManejoDeSurcursales();
+                NegocioSurcursales manejoSuc = new NegocioSurcursales();
                 gridSucursales.DataSource = manejoSuc.ObtenerSucursales();
                 gridSucursales.DataBind();
             }
@@ -24,7 +24,7 @@ namespace Vistas
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            ManejoDeSurcursales manejoSuc = new ManejoDeSurcursales();
+            NegocioSurcursales manejoSuc = new NegocioSurcursales();
             int IdSucursal = Convert.ToInt32(txtIDSucursal.Text.ToString());
             gridSucursales.DataSource= manejoSuc.ObtenerSucursal(IdSucursal);
             gridSucursales.DataBind();
@@ -34,7 +34,7 @@ namespace Vistas
         protected void btnMostrarTodos_Click(object sender, EventArgs e)
         {
             Sucursal suc = new Sucursal();
-            ManejoDeSurcursales manejoSuc = new ManejoDeSurcursales();
+            NegocioSurcursales manejoSuc = new NegocioSurcursales();
 
             gridSucursales.DataSource = manejoSuc.ObtenerSucursales();
             gridSucursales.DataBind();

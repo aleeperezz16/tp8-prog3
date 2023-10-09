@@ -9,11 +9,11 @@ using DAO;
 
 namespace Negocio
 {
-    public class ManejoDeSurcursales
+    public class NegocioSurcursales
     {
         
 
-        public ManejoDeSurcursales() { }
+        public NegocioSurcursales() { }
 
         public DataTable ObtenerProvincias()
         {
@@ -48,23 +48,10 @@ namespace Negocio
             else
                 return false;
         }
-        public bool eliminarSucursal(Sucursal sucursal)
+        public bool eliminarSucursal(int idSucursal)
         {
             DaoSucursal dao = new DaoSucursal();
-            int cantidadFilas = 0;
-            /*if (!Conexion.existe(consulta))
-            {
-                
-            }*/
-            cantidadFilas = dao.eliminarRegistro(sucursal);
-            if (cantidadFilas == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return dao.eliminarRegistro(idSucursal) == 1;
         }
     }
 }
